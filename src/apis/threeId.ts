@@ -24,7 +24,7 @@ export async function createThreeIdFromSeed({
 }
 
 export async function createThreeIdFromEthereumProvider({
-  threeIdConnectHost,
+  threeIdConnectHost = 'https://app.3idconnect.org',
   ceramic,
   ethereumProvider,
   address,
