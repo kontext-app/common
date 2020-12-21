@@ -1,7 +1,7 @@
 {
   "name": "common",
   "version": "1.0.0",
-  "main": "build/index.js",
+  "main": "src/index.ts",
   "repository": "git@github.com:kontext-app/common.git",
   "author": "Dong-Ha Kim <dongha.kim210@gmail.com>",
   "license": "MIT",
@@ -21,7 +21,6 @@
     "web3modal": "^1.9.2"
   },
   "scripts": {
-    "build:package": "tsc -p tsconfig.json",
     "build:scripts": "tsc -p tsconfig.scripts.json",
     "idx:publish": "yarn idx:publish:schemas && yarn idx:publish:definitions && yarn idx:constants",
     "idx:publish:schemas": "yarn build:scripts && node ./scripts/build/scripts/publish-schemas.js",
