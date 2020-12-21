@@ -1,6 +1,7 @@
 import * as ceramic from './apis/ceramic';
 import * as idx from './apis/idx';
 import * as web3 from './apis/web3';
+import * as threeId from './apis/threeId';
 
 import * as dotenv from './utils/dotenv';
 
@@ -11,6 +12,7 @@ export const apis = {
   ceramic,
   web3,
   idx,
+  threeId,
 };
 
 export const utils = {
