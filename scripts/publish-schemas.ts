@@ -62,10 +62,9 @@ async function publishSchemas(ceramic: CeramicApi) {
         name: schema.title,
         content: schema,
       });
-      const schemaDocID = schemaDoc.id.toUrl();
-      const withVersion = DocID.fromString(schemaDocID, '0').toUrl();
-      schemaNameToDocId[schemaName] = withVersion;
-      console.log(`✅ Schema ${schema.title} published. DocId: ${withVersion}`);
+      const schemaDocID = schemaDoc.commitId.toUrl();
+      schemaNameToDocId[schemaName] = schemaDocID;
+      console.log(`✅ Schema ${schema.title} published. DocId: ${schemaDocID}`);
     } catch (error) {
       console.log(`❌ Schema ${schema.title} failed.`, error);
     }
