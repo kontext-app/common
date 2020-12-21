@@ -2,7 +2,7 @@ import { definitions, schemas } from '@ceramicstudio/idx-constants';
 
 import * as ceramic from './apis/ceramic';
 import * as idx from './apis/idx';
-import * as web3 from './apis/web3';
+import * as web3Modal from './apis/web3Modal';
 import * as threeId from './apis/threeId';
 
 import * as dotenv from './utils/dotenv';
@@ -13,7 +13,7 @@ import * as enums from './constants/enums';
 
 export const apis = {
   ceramic,
-  web3,
+  web3Modal,
   idx,
   threeId,
 };
