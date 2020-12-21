@@ -2,6 +2,7 @@
   "name": "kontext-common",
   "version": "1.0.0",
   "main": "src/index.ts",
+  "types": "src/types.ts",
   "repository": "git@github.com:kontext-app/common.git",
   "author": "Dong-Ha Kim <dongha.kim210@gmail.com>",
   "license": "MIT",
