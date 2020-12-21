@@ -7,6 +7,7 @@ import * as dotenv from './utils/dotenv';
 
 import { PUBLISHED_DEFINITIONS } from './constants/definitions';
 import { PUBLISHED_SCHEMAS } from './constants/schemas';
+import * as enums from './constants/enums';
 
 export const apis = {
   ceramic,
@@ -22,6 +23,7 @@ export const utils = {
 export const constants = {
   PUBLISHED_DEFINITIONS,
   PUBLISHED_SCHEMAS,
+  enums,
 };
 
 export default {
