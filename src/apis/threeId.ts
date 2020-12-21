@@ -29,7 +29,7 @@ export async function createThreeIdFromEthereumProvider({
   ethereumProvider,
   address,
 }: {
-  threeIdConnectHost: string;
+  threeIdConnectHost?: string;
   ceramic: CeramicApi;
   ethereumProvider: any;
   address: string;

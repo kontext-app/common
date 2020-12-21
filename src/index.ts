@@ -1,3 +1,5 @@
+import { definitions, schemas } from '@ceramicstudio/idx-constants';
+
 import * as ceramic from './apis/ceramic';
 import * as idx from './apis/idx';
 import * as web3 from './apis/web3';
@@ -21,8 +23,14 @@ export const utils = {
 };
 
 export const constants = {
-  PUBLISHED_DEFINITIONS,
-  PUBLISHED_SCHEMAS,
+  definitions: {
+    ...PUBLISHED_DEFINITIONS,
+    ...definitions,
+  },
+  schemas: {
+    ...schemas,
+    ...PUBLISHED_SCHEMAS,
+  },
   enums,
 };
 
