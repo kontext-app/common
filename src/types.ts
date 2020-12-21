@@ -50,3 +50,13 @@ export type BasicProfileDocContent = {
 };
 
 export type BasicProfileDoc = CeramicDoc<BasicProfileDocContent>;
+
+export type AuthenticationMethod = 'seed' | 'ethereum';
+
+export type DefaultBookmarksIndexKey =
+  | 'unsorted'
+  | 'public'
+  | 'private'
+  | 'lists';
+
+export type LoadingStatus = 'idle' | 'pending' | 'rejected' | 'fulfilled';
