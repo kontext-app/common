@@ -1,5 +1,5 @@
 {
-  "name": "common",
+  "name": "kontext-common",
   "version": "1.0.0",
   "main": "src/index.ts",
   "repository": "git@github.com:kontext-app/common.git",
