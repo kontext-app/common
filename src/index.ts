@@ -1,4 +1,5 @@
 import * as ceramic from './apis/ceramic';
+import * as idx from './apis/idx';
 import * as web3 from './apis/web3';
 
 import * as dotenv from './utils/dotenv';
@@ -9,6 +10,7 @@ import { PUBLISHED_SCHEMAS } from './constants/schemas';
 export const apis = {
   ceramic,
   web3,
+  idx,
 };
 
 export const utils = {
