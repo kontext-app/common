@@ -16,7 +16,7 @@ jobs:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
-      - run: yarn version -minor
+      - run: yarn version --minor
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -24,4 +24,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
- 
+          tags: true
