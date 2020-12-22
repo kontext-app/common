@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
       - run: yarn
       - run: yarn version --minor
       - run: yarn publish
