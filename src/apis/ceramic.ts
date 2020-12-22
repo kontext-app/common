@@ -8,7 +8,3 @@ export function createCeramic(
   });
   return ceramic;
 }
-
-export default {
-  createCeramic,
-};

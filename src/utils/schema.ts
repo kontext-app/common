@@ -1,0 +1,24 @@
+import { schemas, definitions } from '../index';
+
+export function getSchemaNameByDocID(docID?: string): string | null {
+  return findRecordKeyByValue(schemas, docID);
+}
+
+export function getDefinitionNameByDocID(docID?: string): string | null {
+  return findRecordKeyByValue(definitions, docID);
+}
+
+function findRecordKeyByValue(
+  records: {
+    [key: string]: string;
+  },
+  value?: string
+): string | null {
+  if (!value) {
+    return null;
+  }
+
+  const valueIndex = Object.values(definitions).indexOf(value);
+
+  return valueIndex === -1 ? null : Object.keys(records)[valueIndex];
+}

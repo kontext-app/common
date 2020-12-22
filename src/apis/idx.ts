@@ -1,17 +1,19 @@
 import { IDX } from '@ceramicstudio/idx';
-import { definitions } from '@ceramicstudio/idx-constants';
 
-import { PUBLISHED_DEFINITIONS } from '../constants/definitions';
+import { definitions, enums, schemas } from '../constants';
 
 import type { CeramicApi } from '@ceramicnetwork/common';
+import type {
+  BasicProfileDocContent,
+  BookmarksIndexDocContent,
+  BookmarkDocContent,
+  BookmarksDoc,
+} from '../types';
 
 export function createIDX(ceramic: CeramicApi) {
   const idx = new IDX({
     ceramic,
-    aliases: {
-      ...definitions,
-      ...PUBLISHED_DEFINITIONS,
-    },
+    aliases: { ...definitions },
   });
   return idx;
 }
