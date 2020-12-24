@@ -31,14 +31,18 @@
     "idx:publish": "yarn idx:publish:schemas && yarn idx:publish:definitions && yarn idx:constants",
     "idx:publish:schemas": "yarn build:scripts && node ./scripts/build/scripts/publish-schemas.js",
     "idx:publish:definitions": "yarn build:scripts && node ./scripts/build/scripts/publish-definitions.js",
-    "idx:constants": "yarn build:scripts && node ./scripts/build/scripts/json-to-constants.js"
+    "idx:constants": "yarn build:scripts && node ./scripts/build/scripts/json-to-constants.js",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.19",
     "@types/prettier": "^2.1.5",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   }
 }
