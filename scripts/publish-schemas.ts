@@ -1,5 +1,4 @@
 import { publishSchema, publishIDXConfig } from '@ceramicstudio/idx-tools';
-import DocID from '@ceramicnetwork/docid';
 
 import { parseSeedFromDotenv, parseDotenv } from '../src/utils/dotenv';
 import { createCeramic } from '../src/apis/ceramic';
@@ -15,6 +14,8 @@ const {
   BookmarksIndex,
   BookmarksList,
   BookmarksLists,
+  Rating,
+  RatingsIndex,
 } = schemas;
 
 const schemasToPublish: {
@@ -25,6 +26,8 @@ const schemasToPublish: {
   BookmarksIndex,
   BookmarksList,
   BookmarksLists,
+  Rating,
+  RatingsIndex,
 };
 
 async function main() {

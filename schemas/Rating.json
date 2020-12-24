@@ -1,17 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "title": "Kontext",
+  "title": "Rating",
   "properties": {
-    "referencedDoc": {
+    "ratedDocId": {
       "type": "string",
       "pattern": "^ceramic://.+(\\?version=.+)?",
       "maxLength": 1024
     },
-    "comment": {
+    "body": {
       "type": "string",
-      "title": "comment",
+      "title": "body",
       "maxLength": 1024
+    },
+    "title": {
+      "type": "string",
+      "title": "title",
+      "maxLength": 300
     },
     "bestRating": {
       "type": "integer",
@@ -20,6 +25,10 @@
     "worstRating": {
       "type": "integer",
       "title": "worstRating"
+    },
+    "rating": {
+      "type": "integer",
+      "title": "rating"
     }
   }
 }
