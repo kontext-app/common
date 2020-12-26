@@ -17,6 +17,11 @@ export const DefaultBookmarksIndexKeys = {
   LISTS: 'lists',
 };
 
+export const DefaultRatingsIndexKeys = {
+  BOOKMARKS: 'bookmarks',
+  RATINGS: 'ratings',
+};
+
 export const AuthenticationMethods: {
   SEED: 'seed';
   ETHEREUM: 'ethereum';
