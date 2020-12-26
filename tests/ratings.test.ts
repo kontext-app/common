@@ -71,5 +71,80 @@ describe('ratings api', () => {
         expect(docContent).toEqual({ bookmarks: [] });
       });
     });
+
+    describe('#setDefaultRatingsIndex()', () => {
+      it('should set default RatingsIndex doc', async () => {
+        const mockIDX = jest.fn().mockImplementation(() => ({
+          remove: () => Promise.resolve(),
+          set: () =>
+            Promise.resolve({
+              toUrl: () => 'ceramic://defaultRatingsIndexDocId',
+            }),
+        }));
+
+        const docId = await ratingsApi.setDefaultRatingsIndex(mockIDX());
+        expect(docId).toEqual('ceramic://defaultRatingsIndexDocId');
+      });
+    });
+
+    describe('#addRatingDocToRatingsIndex()', () => {
+      it('should throw if RatingsIndex doc content empty', async () => {
+        const mockIDX = jest.fn().mockImplementation(() => ({
+          get: () => Promise.resolve(),
+        }));
+
+        await expect(
+          ratingsApi.addRatingDocToRatingsIndex(mockIDX(), {
+            ratingDocID: 'ceramic://',
+          })
+        ).rejects.toThrow();
+      });
+
+      it('should return RatingsIndex doc with appended rating doc id', async () => {
+        const mockIDX = jest.fn().mockImplementation(() => ({
+          get: () =>
+            Promise.resolve({ bookmarks: ['ceramic://existingRatingDocId'] }),
+          set: () => Promise.resolve(),
+        }));
+
+        const updatedRatingsIndexDocContent = await ratingsApi.addRatingDocToRatingsIndex(
+          mockIDX(),
+          {
+            ratingDocID: 'ceramic://newRatingDocId',
+            ratingsIndexKey: 'bookmarks',
+          }
+        );
+        expect(updatedRatingsIndexDocContent).toEqual({
+          bookmarks: [
+            'ceramic://newRatingDocId',
+            'ceramic://existingRatingDocId',
+          ],
+        });
+      });
+    });
+  });
+
+  describe('Rating schema', () => {
+    describe('#createRatingDoc()', () => {
+      it('should return doc id of created rating doc', async () => {
+        const mockIDX = jest.fn().mockImplementation(() => ({
+          id: 'did',
+          ceramic: {
+            createDocument: () =>
+              Promise.resolve({ id: { toUrl: () => 'ceramic://ratingDoc' } }),
+          },
+        }));
+
+        const docId = await ratingsApi.createRatingDoc(mockIDX(), {
+          ratedDocId: 'ceramic://ratedDoc',
+          body: 'good stuff',
+          title: 'very good',
+          bestRating: 1,
+          worstRating: -1,
+          rating: 1,
+        });
+        expect(docId).toEqual('ceramic://ratingDoc');
+      });
+    });
   });
 });
