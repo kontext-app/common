@@ -18,7 +18,7 @@ function findRecordKeyByValue(
     return null;
   }
 
-  const valueIndex = Object.values(definitions).indexOf(value);
+  const valueIndex = Object.values(records).indexOf(value);
 
   return valueIndex === -1 ? null : Object.keys(records)[valueIndex];
 }
