@@ -38,7 +38,6 @@ export async function setDefaultRatingsIndex(idx: IDX): Promise<string> {
   await idx.remove('RatingsIndex');
   const ratingsIndexDocID = await idx.set('RatingsIndex', {
     bookmarks: [],
-    ratings: [],
   });
   return ratingsIndexDocID.toUrl();
 }

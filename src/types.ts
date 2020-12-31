@@ -18,6 +18,8 @@ export type RatingDocContent = {
   bestRating: number;
   worstRating: number;
   rating: number;
+  creationDate: string;
+  author: string;
 };
 
 export type RatingDoc = CeramicDoc<RatingDocContent>;

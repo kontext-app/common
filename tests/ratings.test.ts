@@ -142,6 +142,8 @@ describe('ratings api', () => {
           bestRating: 1,
           worstRating: -1,
           rating: 1,
+          author: 'did',
+          creationDate: new Date().toISOString(),
         });
         expect(docId).toEqual('ceramic://ratingDoc');
       });

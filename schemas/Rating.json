@@ -29,6 +29,30 @@
     "rating": {
       "type": "integer",
       "title": "rating"
+    },
+    "creationDate": {
+      "type": "string",
+      "title": "creationDate",
+      "format": "date-time",
+      "maxLength": 25
+    },
+    "author": {
+      "$ref": "#/definitions/DID"
+    }
+  },
+  "required": ["ratedDocId", "author", "bestRating", "worstRating", "rating"],
+  "definitions": {
+    "DID": {
+      "type": "string",
+      "pattern": "^did:.+:.+",
+      "maxLength": 1024
+    },
+    "DIDArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DID"
+      },
+      "maxLength": 1024
     }
   }
 }
