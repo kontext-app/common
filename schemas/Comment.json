@@ -1,24 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "title": "Rating",
+  "title": "Comment",
   "properties": {
-    "ratedDocId": {
+    "commentedDocId": {
       "type": "string",
       "pattern": "^ceramic://.+(\\?version=.+)?",
       "maxLength": 1024
     },
-    "bestRating": {
-      "type": "integer",
-      "title": "bestRating"
+    "body": {
+      "type": "string",
+      "title": "body",
+      "maxLength": 1024
     },
-    "worstRating": {
-      "type": "integer",
-      "title": "worstRating"
-    },
-    "rating": {
-      "type": "integer",
-      "title": "rating"
+    "title": {
+      "type": "string",
+      "title": "title",
+      "maxLength": 300
     },
     "creationDate": {
       "type": "string",
@@ -30,18 +28,11 @@
       "$ref": "#/definitions/DID"
     }
   },
-  "required": ["ratedDocId", "author", "bestRating", "worstRating", "rating"],
+  "required": ["commentedDocId", "author", "creationDate", "body", "title"],
   "definitions": {
     "DID": {
       "type": "string",
       "pattern": "^did:.+:.+",
-      "maxLength": 1024
-    },
-    "DIDArray": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/DID"
-      },
       "maxLength": 1024
     }
   }

@@ -16,6 +16,8 @@ const {
   BookmarksLists,
   Rating,
   RatingsIndex,
+  Comment,
+  CommentsIndex,
 } = schemas;
 
 const schemasToPublish: {
@@ -28,6 +30,8 @@ const schemasToPublish: {
   BookmarksLists,
   Rating,
   RatingsIndex,
+  Comment,
+  CommentsIndex,
 };
 
 async function main() {

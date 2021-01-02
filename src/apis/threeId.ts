@@ -3,7 +3,7 @@ import ThreeIdDidProvider from '3id-did-provider';
 import { EthereumAuthProvider, ThreeIdConnect } from '3id-connect';
 import { DID } from 'dids';
 
-import type { CeramicApi } from '@ceramicnetwork/common';
+import { CeramicApi } from '@ceramicnetwork/common';
 
 export async function createThreeIdFromSeed({
   ceramic,
@@ -56,6 +56,7 @@ export async function authenticate({
 }) {
   const did = new DID({
     provider: didProvider,
+    // @ts-ignore
     resolver: ThreeIdResolver.getResolver(ceramic),
   });
   await did.authenticate();
