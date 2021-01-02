@@ -10,7 +10,11 @@ export const PUBLISHED_SCHEMAS = {
   BookmarksLists:
     'ceramic://k3y52l7qbv1fry18tlsu8ratoiukrs53ytqbnc8iwbcow3dhbcvidq6cm00emox6o',
   Rating:
-    'ceramic://k3y52l7qbv1frxx0cpx0sld4u1iplghat8et512g9qfw1smj7bf0lhhkc0nf9cum8',
+    'ceramic://k3y52l7qbv1frxifz0u4n1izakh3us1erjfyduufbb2znymiryjj67ja4agukd534',
   RatingsIndex:
-    'ceramic://k3y52l7qbv1fryfuevhiz1iqcftcuu3eediffdmzkvscyc237ihpnqguzmfvi4pvk',
+    'ceramic://k3y52l7qbv1fryeksgcwkhyw9vgghhola19ou46frpi9gvjfvp9n6oqnapx1jma68',
+  Comment:
+    'ceramic://k3y52l7qbv1fry5tjiyyvjd5s4diyabredntwuio7lbxr1x2hp1451ttr7ce2khds',
+  CommentsIndex:
+    'ceramic://k3y52l7qbv1fry7bsaza7b9kem6gb9ufwcgpf3wudp1ihdt6dryk556ypgf8z464g',
 };
