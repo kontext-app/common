@@ -13,8 +13,6 @@ export type RatingsIndexDoc = CeramicDoc<RatingsIndexDocContent>;
 
 export type RatingDocContent = {
   ratedDocId: string;
-  body: string;
-  title: string;
   bestRating: number;
   worstRating: number;
   rating: number;
