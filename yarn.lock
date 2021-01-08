@@ -18,10 +18,10 @@
     "@polkadot/util-crypto" "^3.6.1"
     "@smontero/eosio-signing-tools" "0.0.6"
 
-"3id-connect@^1.0.0-alpha.8":
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/3id-connect/-/3id-connect-1.0.0-alpha.8.tgz#f9218f2e989f0c05796d04ae07a542cc83697504"
-  integrity sha512-0pYbnoF3aKM9OUS9e8r4P1JZmjJtaDug8Jngkbc8bnCZMuJ7bR61vcxkQfwFdQ1OjCcnuFb2To/Yc2GAQk42tw==
+"3id-connect@^1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/3id-connect/-/3id-connect-1.0.0-alpha.9.tgz#83af14ad087b978d57201e21bb8df5af184c57fb"
+  integrity sha512-vx+2oPwaV1bwk6gsghvWV5ghrIkROxN1RXsR1+cMyb77Asd6Eojo9t6ko55sgV8t3Bp8v+QmBBsQqkCFC3Hwvw==
   dependencies:
     "3id-blockchain-utils" "^1.3.1"
     "3id-did-provider" "^0.2.0"
@@ -353,12 +353,12 @@
     cross-fetch "^3.0.6"
     uint8arrays "^1.1.0"
 
-"@ceramicnetwork/3id-did-resolver@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@ceramicnetwork/3id-did-resolver/-/3id-did-resolver-0.6.2.tgz#01880f68e5725a7c454ed62eacbc2260d1f73b77"
-  integrity sha512-pj6WVJ4+/bKIT3B3yI7u/orgBDfWBpnP8dPvgfl0FiiKNnUg1gVCb5mjyZbRzoXVCymOa8wJgRpKHQPcMmmQpw==
+"@ceramicnetwork/3id-did-resolver@^0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@ceramicnetwork/3id-did-resolver/-/3id-did-resolver-0.6.4.tgz#308666cc40d4d2a05f9b9d842603075173e85587"
+  integrity sha512-GCzOrBJoMDpAby/xeSN9APOm2+CSIUmzjNXNoyowJrLktxcuw0glr57d2CxXA7tY9zyshqAyuQHSRAJTBYsbCA==
   dependencies:
-    "@ceramicnetwork/common" "^0.15.2"
+    "@ceramicnetwork/common" "^0.15.4"
     "@ceramicnetwork/docid" "^0.4.2"
     cids "1.0.2"
     cross-fetch "^3.0.6"
@@ -378,10 +378,10 @@
     loglevel-plugin-prefix "^0.8.4"
     uint8arrays "^1.1.0"
 
-"@ceramicnetwork/common@^0.15.2":
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/@ceramicnetwork/common/-/common-0.15.2.tgz#9f9a659d1cc1eb1234d2bb9baf054e7f09890a3c"
-  integrity sha512-0Ufr+Csc1AEQuf3YPjWjhwxM4Cq6mA71YXhI8ZVd/wSufpAxmTDolwCtXXYjpWT0S8nLBP93CgmbaijzLQPgKQ==
+"@ceramicnetwork/common@^0.15.4":
+  version "0.15.4"
+  resolved "https://registry.yarnpkg.com/@ceramicnetwork/common/-/common-0.15.4.tgz#82d5a1937fb7e19608512c843a8ee9bab90d6cf7"
+  integrity sha512-YJ8WfIJ90hkGQMYQ/aqkNdw9XqQpVhD+iXw3EyG0vcbKrsczW0qP2tga8XLE5Gsms1j7Y2hKxBMTvQRxKNXPBQ==
   dependencies:
     "@ceramicnetwork/docid" "^0.4.2"
     cids "1.0.2"
@@ -390,6 +390,7 @@
     lodash.clonedeep "^4.5.0"
     loglevel "^1.7.0"
     loglevel-plugin-prefix "^0.8.4"
+    lru_map "^0.4.1"
     uint8arrays "^1.1.0"
 
 "@ceramicnetwork/docid@^0.4.0":
@@ -424,13 +425,13 @@
     "@types/lodash.clonedeep" "^4.5.6"
     cids "1.0.2"
 
-"@ceramicnetwork/doctype-caip10-link@^0.12.4":
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/@ceramicnetwork/doctype-caip10-link/-/doctype-caip10-link-0.12.4.tgz#01c2e9bfaebc409b37ee2b314d0ed78488304950"
-  integrity sha512-/trSzMHZRaqWvcL3e6NxohIFWO4AQC12wotmvhRf04Ila0WgEdoLZtcePwJ3dudpzZyVIMJfsn0xR6KuaoV6Tg==
+"@ceramicnetwork/doctype-caip10-link@^0.12.6":
+  version "0.12.6"
+  resolved "https://registry.yarnpkg.com/@ceramicnetwork/doctype-caip10-link/-/doctype-caip10-link-0.12.6.tgz#d3e993e249e6ea5887babc8a620912f12371d116"
+  integrity sha512-3p+MA4Mki+bL9ZMFMro3nhy+13hUkrcFdg8SzJzvQhPlkoig3DBh87FWUtjDsGfNQZXAHCa6ig3zIGs3OFAX3g==
   dependencies:
     "3id-blockchain-utils" "^1.1.0"
-    "@ceramicnetwork/common" "^0.15.2"
+    "@ceramicnetwork/common" "^0.15.4"
     "@types/lodash.clonedeep" "^4.5.6"
     cids "1.0.2"
 
@@ -452,12 +453,12 @@
     fast-json-patch "^2.2.1"
     fast-json-stable-stringify "^2.1.0"
 
-"@ceramicnetwork/doctype-tile@^0.12.6":
-  version "0.12.6"
-  resolved "https://registry.yarnpkg.com/@ceramicnetwork/doctype-tile/-/doctype-tile-0.12.6.tgz#eba69c2c5211ec00923d1b6c6816873fef74785c"
-  integrity sha512-t1LlC04lUh0e3+4Bb9JGHJIRXzzbQTafNN/cHjO26ZBVl7+4T4y72oXBQ+kriTZUm853A3WEUH+jow/fSPIwpg==
+"@ceramicnetwork/doctype-tile@^0.12.8":
+  version "0.12.8"
+  resolved "https://registry.yarnpkg.com/@ceramicnetwork/doctype-tile/-/doctype-tile-0.12.8.tgz#408952ee605d0bf8946087237a196f5fbdd022c7"
+  integrity sha512-VmZ8nNC/u4uRdv0EQEFM6VfMIXoucc06UfruA/xlwFiWt16IzYAj5BrbeZK2YmwGv8RUspSwqB8q/jtAq6rx+A==
   dependencies:
-    "@ceramicnetwork/common" "^0.15.2"
+    "@ceramicnetwork/common" "^0.15.4"
     "@ethersproject/base64" "^5.0.2"
     "@ethersproject/random" "^5.0.2"
     "@types/lodash.clonedeep" "^4.5.6"
@@ -469,16 +470,16 @@
     fast-json-patch "^2.2.1"
     fast-json-stable-stringify "^2.1.0"
 
-"@ceramicnetwork/http-client@^0.8.10":
-  version "0.8.10"
-  resolved "https://registry.yarnpkg.com/@ceramicnetwork/http-client/-/http-client-0.8.10.tgz#913301b14db98691d25eb6944d958e083f983fab"
-  integrity sha512-aYjdo0PQjmfidhoYEcyQGPnxSUN/L8jlT+kbZq/kbduk5sYEr7jxlzlxE5G3aAlUdO7/OArJDCR6CxgWU7m7CQ==
+"@ceramicnetwork/http-client@^0.8.12":
+  version "0.8.12"
+  resolved "https://registry.yarnpkg.com/@ceramicnetwork/http-client/-/http-client-0.8.12.tgz#fc074ede23189f0ca5bd862bdc989f7c5ce8ead6"
+  integrity sha512-Wiso/5me154nXTKPEL8jRCcvTdRBzjZr/P/oQnhNo0NgxAx6I+jw3npnK7g8nMLXtSKiXXxuTBRdHuvoIObaIQ==
   dependencies:
-    "@ceramicnetwork/3id-did-resolver" "^0.6.2"
-    "@ceramicnetwork/common" "^0.15.2"
+    "@ceramicnetwork/3id-did-resolver" "^0.6.4"
+    "@ceramicnetwork/common" "^0.15.4"
     "@ceramicnetwork/docid" "^0.4.2"
-    "@ceramicnetwork/doctype-caip10-link" "^0.12.4"
-    "@ceramicnetwork/doctype-tile" "^0.12.6"
+    "@ceramicnetwork/doctype-caip10-link" "^0.12.6"
+    "@ceramicnetwork/doctype-tile" "^0.12.8"
     cids "1.0.2"
     cross-fetch "^3.0.6"
     did-resolver "^2.1.1"
@@ -4001,6 +4002,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lru_map@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.4.1.tgz#f7b4046283c79fb7370c36f8fca6aee4324b0a98"
+  integrity sha512-I+lBvqMMFfqaV8CJCISjI3wbjmwVu/VyOoU7+qtu9d7ioW5klMgsTTiUOUp+DJvfTTzKXoPbyC6YfgkNcyPSOg==
 
 make-dir@^3.0.0:
   version "3.1.0"

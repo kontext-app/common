@@ -10,10 +10,10 @@
   "author": "Dong-Ha Kim <dongha.kim210@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "3id-connect": "^1.0.0-alpha.8",
+    "3id-connect": "^1.0.0-alpha.9",
     "3id-did-provider": "^0.2.0",
-    "@ceramicnetwork/3id-did-resolver": "^0.6.2",
-    "@ceramicnetwork/http-client": "^0.8.10",
+    "@ceramicnetwork/3id-did-resolver": "^0.6.4",
+    "@ceramicnetwork/http-client": "^0.8.12",
     "@ceramicstudio/idx": "^0.5.2",
     "@ceramicstudio/idx-constants": "^0.5.1",
     "@ceramicstudio/idx-tools": "^0.5.0",
