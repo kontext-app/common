@@ -88,4 +88,12 @@ export async function createRatingDoc(
   return id.toUrl();
 }
 
+export async function getRatingDocContent(
+  idx: IDX,
+  docID: string
+): Promise<RatingDocContent> {
+  const ratingDoc = await idx.ceramic.loadDocument(docID);
+  return ratingDoc.content;
+}
+
 //#endregion
