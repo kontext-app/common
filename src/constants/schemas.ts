@@ -1,20 +1,20 @@
 export const PUBLISHED_SCHEMAS = {
   Bookmark:
-    'ceramic://k3y52l7qbv1frxjpo8lm2hawnq5ya4el9yuti96amsdtvwb649j99qc78zlttgagw',
+    'ceramic://k3y52l7qbv1frxl89jcds1pysmk9wrngpnr31y48asef7qba7jfafbqput11psp34',
   Bookmarks:
-    'ceramic://k3y52l7qbv1frxou1t1nuapczi9kmpyqm8i9mmkpq031lpmz5z8xq1g0j3nvc6gow',
+    'ceramic://k3y52l7qbv1frxkxkae8qmnij6sjbqpp9x2gwrisbu15jo6lqrm14yoroeg63nxmo',
   BookmarksIndex:
-    'ceramic://k3y52l7qbv1frxlxmjqena9lzgn522icc5verwn1c1oebfcd3sbjukiftqn3lq6f4',
+    'ceramic://k3y52l7qbv1frxstmjnswddeezf5jtqss9k18iv4xj3b6a8656236mbmdo4kfgwlc',
   BookmarksList:
-    'ceramic://k3y52l7qbv1frypn0rbxuuycpgut845gegyo7tbuidmvll0fx1q8ax66pycw3e6tc',
+    'ceramic://k3y52l7qbv1fryhp64z2sjw3adittmu9x4q1ep9udeque91hl17wvav2vb2lm9edc',
   BookmarksLists:
-    'ceramic://k3y52l7qbv1fry18tlsu8ratoiukrs53ytqbnc8iwbcow3dhbcvidq6cm00emox6o',
+    'ceramic://k3y52l7qbv1fryorwarwipvzmlyb3edqgwcnlyrob2zr0zrrvdy8kfdbfslx6ltkw',
   Rating:
-    'ceramic://k3y52l7qbv1frxifz0u4n1izakh3us1erjfyduufbb2znymiryjj67ja4agukd534',
+    'ceramic://k3y52l7qbv1fryitmt4zj812jso9utd83u1jw6ub9uk5nem3ybhfx8qq3kcwk4nb4',
   RatingsIndex:
-    'ceramic://k3y52l7qbv1fryeksgcwkhyw9vgghhola19ou46frpi9gvjfvp9n6oqnapx1jma68',
+    'ceramic://k3y52l7qbv1fry7fwkg8o65oqw70ocss4qlg3rb7ll9se2sfakyo3weaopt1bgykg',
   Comment:
-    'ceramic://k3y52l7qbv1fry5tjiyyvjd5s4diyabredntwuio7lbxr1x2hp1451ttr7ce2khds',
+    'ceramic://k3y52l7qbv1fryftfcwvswb3hepfox9xpxta5c4ygacnz6ia1kixv1vqjjeqi3ksg',
   CommentsIndex:
-    'ceramic://k3y52l7qbv1fry7bsaza7b9kem6gb9ufwcgpf3wudp1ihdt6dryk556ypgf8z464g',
+    'ceramic://k3y52l7qbv1frymgkhpl4xzp0nxdlnebdnka2k6o7dr5s0uuzzn8j0ldq04c4yby8',
 };

@@ -10,7 +10,7 @@ export async function getRatingsIndexDocID(
   idx: IDX,
   did?: string
 ): Promise<string | null> {
-  const idxDocContent = await idx.getIDXContent(did);
+  const idxDocContent = await idx.getIndex(did);
 
   if (!idxDocContent) {
     return null;

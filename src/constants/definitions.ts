@@ -1,18 +1,20 @@
 export const PUBLISHED_DEFINITIONS = {
   Bookmark:
-    'ceramic://kjzl6cwe1jw146wz7dhv2w62h47xzn0e201nwesfxuatyy0qcgeugl2hg1v6yvb',
+    'ceramic://kjzl6cwe1jw1495ededqat2fpqz1on5bpebovi9vyhyblcrd1ew95y04q58rvv6',
   Bookmarks:
-    'ceramic://kjzl6cwe1jw14aevt7ccz9vzw0vtax1pobc54yigqci7ks19aiws2xsv8peaten',
+    'ceramic://kjzl6cwe1jw149vlz69xv7jcn0hl6oid5olt57xzphz8y0sgiqthbumrl3loail',
   BookmarksIndex:
-    'ceramic://kjzl6cwe1jw14afiqrk25r6pblekyuxh1bruc8yze8r2kyc053bfvkze75ip9z2',
+    'ceramic://kjzl6cwe1jw145s16t2q58f93s4qlryqwxhkmw0g2efelcpv4d2chofwskgad71',
   BookmarksList:
-    'ceramic://kjzl6cwe1jw149avnmf7a2ek05dfagty1pwv1besnqlsu4630l56hhjwln70fqc',
+    'ceramic://kjzl6cwe1jw1485o0jo8weefdvcbuovp0kngy4hvzavmuof4e749qizu6tuilve',
   BookmarksLists:
-    'ceramic://kjzl6cwe1jw149jfqlg45tgdxxt7dtqk2laegf4r97dqyltvjdbp3lkrz9eeh1j',
+    'ceramic://kjzl6cwe1jw147sd8yf3a5z7lfeqre0j00k30x1krijliwgltthtvhrfknion9s',
   Rating:
-    'ceramic://kjzl6cwe1jw146lox2oysd0uk3e172beeuzrk5gx20gryf4xv8vnqbtnbvjai5l',
+    'ceramic://kjzl6cwe1jw14bk1thqcrhr6nvvjxamqqjvwuwvry5agmqy2x9tei3hd8rca0gt',
   RatingsIndex:
-    'ceramic://kjzl6cwe1jw146dpp65kaq4frythggr4gewaj7wctb5kpa7xd0mw5qsljbn2jyy',
+    'ceramic://kjzl6cwe1jw149pvzfbgy3rvu9n1c7hkzrr62f7f2nxtyyf4wcxst060dnquece',
   Comment:
-    'ceramic://kjzl6cwe1jw14bcp5nq7pltbh9olkjte6i5xsa0wupx1h9bn9yb4gi14rq1pfey',
+    'ceramic://kjzl6cwe1jw147l3vpeplix23jjygnypkkih9u3mr8fxssqfns280bp94arpvz7',
+  CommentsIndex:
+    'ceramic://kjzl6cwe1jw1481xg00wl9y0tt77wvmg17ugk8dfcoc2t4qi7rm2byt3h1csaaw',
 };
