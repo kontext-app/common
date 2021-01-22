@@ -13,6 +13,7 @@ export async function createThreeIdFromSeed({
   seed: Uint8Array;
 }) {
   const threeIdProvider = await ThreeIdDidProvider.create({
+    // @ts-ignore
     ceramic,
     getPermission: async () => [],
     seed,
