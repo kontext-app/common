@@ -7,6 +7,8 @@ import type {
   BookmarkDocContent,
   BookmarksDoc,
   DefaultBookmarksIndexKey,
+  BookmarksListDocContent,
+  BookmarksListsDoc,
 } from '../types';
 
 //#region schema `BookmarksIndex`
@@ -66,7 +68,7 @@ export async function setDefaultBookmarksIndex(idx: IDX): Promise<string> {
 export async function getBookmarksDocIDByIndexKey(
   idx: IDX,
   params: {
-    indexKey: DefaultBookmarksIndexKey;
+    indexKey: DefaultBookmarksIndexKey | string;
     did: string;
   }
 ): Promise<string | null> {
@@ -80,6 +82,39 @@ export async function getBookmarksDocIDByIndexKey(
   }
 
   return bookmarksIndexDocContent[params.indexKey];
+}
+
+export async function addEmptyBookmarksDocToIndexDoc(
+  idx: IDX,
+  params: {
+    indexKey: string;
+    did: string;
+  }
+) {
+  const bookmarksIndexDocContent = await getBookmarksIndexDocContent(
+    idx,
+    params.did
+  );
+
+  if (!bookmarksIndexDocContent) {
+    throw new Error('BookmarksIndex is not set');
+  }
+
+  const bookmarksDocIDForIndexKey = bookmarksIndexDocContent[params.indexKey];
+
+  if (bookmarksDocIDForIndexKey) {
+    throw new Error(
+      `BookmarksDoc already exists for index key ${params.indexKey}`
+    );
+  }
+
+  const emptyBookmarksDocID = await createEmptyBookmarksDoc(idx);
+  const bookmarksIndexDocID = await idx.set('BookmarksIndex', {
+    ...bookmarksIndexDocContent,
+    [params.indexKey]: emptyBookmarksDocID,
+  });
+
+  return bookmarksIndexDocID.toUrl();
 }
 
 //#region schema `Bookmarks`
@@ -176,6 +211,67 @@ export async function createEmptyBookmarksListsDoc(idx: IDX): Promise<string> {
     },
   });
   return id.toUrl();
+}
+
+export async function addBookmarksListDocToBookmarksListsDoc(
+  idx: IDX,
+  params: {
+    bookmarksListDocID: string;
+    bookmarksListsDocID: string;
+  }
+): Promise<BookmarksListsDoc> {
+  const { bookmarksListDocID, bookmarksListsDocID } = params;
+  const bookmarksListsDoc = await idx.ceramic.loadDocument(bookmarksListsDocID);
+  const existingBookmarksListDocIDs = bookmarksListsDoc.content;
+  const updatedBookmarksListDocIDs = [
+    bookmarksListDocID,
+    ...existingBookmarksListDocIDs,
+  ];
+
+  await bookmarksListsDoc.change({
+    content: updatedBookmarksListDocIDs,
+  });
+
+  const updatedBookmarksListsDoc = await idx.ceramic.loadDocument(
+    bookmarksListsDocID
+  );
+  return updatedBookmarksListsDoc;
+}
+
+export async function getBookmarksListsDocContent(
+  idx: IDX,
+  docID: string
+): Promise<Array<string>> {
+  const bookmarksListsCollectionDoc = await idx.ceramic.loadDocument(docID);
+  return bookmarksListsCollectionDoc.content;
+}
+
+//#endregion
+
+//#region `BookmarksList`
+
+export async function createBookmarksListDoc(
+  idx: IDX,
+  bookmarksList: BookmarksListDocContent
+): Promise<string> {
+  const did = idx.id;
+  const { id } = await idx.ceramic.createDocument('tile', {
+    content: bookmarksList,
+    metadata: {
+      schema: schemas.Bookmark,
+      controllers: [did],
+      tags: ['bookmarks'],
+    },
+  });
+  return id.toUrl();
+}
+
+export async function getBookmarksListDocContent(
+  idx: IDX,
+  docID: string
+): Promise<BookmarksListDocContent> {
+  const bookmarksListDoc = await idx.ceramic.loadDocument(docID);
+  return bookmarksListDoc.content;
 }
 
 //#endregion
