@@ -42,6 +42,35 @@ export async function setDefaultRatingsIndex(idx: IDX): Promise<string> {
   return ratingsIndexDocID.toUrl();
 }
 
+export async function addEmptyRatingsIndexKey(
+  idx: IDX,
+  params: {
+    did: string;
+    indexKey: string;
+  }
+) {
+  const ratingsIndexDocContent = await getRatingsIndexDocContent(
+    idx,
+    params.did
+  );
+
+  if (!ratingsIndexDocContent) {
+    throw new Error('RatingsIndex is not set');
+  }
+
+  const ratingDocIDsForIndexKey = ratingsIndexDocContent[params.indexKey];
+
+  if (Array.isArray(ratingDocIDsForIndexKey)) {
+    throw new Error(`Index key ${params.indexKey} already exists`);
+  }
+
+  const ratingsIndexDocID = await idx.set('RatingsIndex', {
+    ...ratingsIndexDocContent,
+    [params.indexKey]: [],
+  });
+  return ratingsIndexDocID.toUrl();
+}
+
 export async function addRatingDocToRatingsIndex(
   idx: IDX,
   params: {
