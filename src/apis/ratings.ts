@@ -97,6 +97,32 @@ export async function addRatingDocToRatingsIndex(
   return newRatingsIndexDocContent;
 }
 
+export async function addManyRatingDocsToRatingsIndex(
+  idx: IDX,
+  params: {
+    ratingDocIDs: string[];
+    ratingsIndexKey?: string;
+  }
+): Promise<RatingsIndexDocContent> {
+  const { ratingDocIDs = [], ratingsIndexKey = 'bookmarks' } = params;
+
+  const ratingsIndexDocContent = await getRatingsIndexDocContent(idx);
+
+  if (!ratingsIndexDocContent) {
+    throw new Error('Default RatingsIndex doc content is not set');
+  }
+
+  const existingRatingDocIDs = ratingsIndexDocContent[ratingsIndexKey];
+  const updatedRatingDocIDs = [...ratingDocIDs, ...existingRatingDocIDs];
+  const newRatingsIndexDocContent = {
+    ...ratingsIndexDocContent,
+    [ratingsIndexKey]: updatedRatingDocIDs,
+  };
+  await idx.set('RatingsIndex', newRatingsIndexDocContent);
+
+  return newRatingsIndexDocContent;
+}
+
 //#endregion
 
 //#region schema `Rating`

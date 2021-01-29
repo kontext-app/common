@@ -153,6 +153,26 @@ export async function addBookmarkDocToBookmarksDoc(
   return updatedBookmarksDoc;
 }
 
+export async function addManyBookmarkDocsToBookmarksDoc(
+  idx: IDX,
+  params: {
+    bookmarkDocIDs: string[];
+    bookmarksDocID: string;
+  }
+): Promise<BookmarksDoc> {
+  const { bookmarkDocIDs = [], bookmarksDocID } = params;
+  const bookmarksDoc = await idx.ceramic.loadDocument(bookmarksDocID);
+  const existingBookmarkDocIDs = bookmarksDoc.content;
+  const updatedBookmarkDocIDs = [...bookmarkDocIDs, ...existingBookmarkDocIDs];
+
+  await bookmarksDoc.change({
+    content: updatedBookmarkDocIDs,
+  });
+
+  const updatedBookmarksDoc = await idx.ceramic.loadDocument(bookmarksDocID);
+  return updatedBookmarksDoc;
+}
+
 export async function getBookmarksDocContent(
   idx: IDX,
   docID: string
