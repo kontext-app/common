@@ -8,30 +8,16 @@ import schemas from '../schemas';
 
 import type { CeramicApi } from '@ceramicnetwork/common';
 
-const {
-  Bookmark,
-  Bookmarks,
-  BookmarksIndex,
-  BookmarksList,
-  BookmarksLists,
-  Rating,
-  RatingsIndex,
-  Comment,
-  CommentsIndex,
-} = schemas;
+const { DocIdArrayIndex, Bookmark, List, Rating, Comment } = schemas;
 
 const schemasToPublish: {
   [schemaName: string]: any;
 } = {
+  DocIdArrayIndex,
   Bookmark,
-  Bookmarks,
-  BookmarksIndex,
-  BookmarksList,
-  BookmarksLists,
+  List,
   Rating,
-  RatingsIndex,
   Comment,
-  CommentsIndex,
 };
 
 async function main() {

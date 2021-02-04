@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/RatingsIndex",
-  "title": "RatingsIndex",
+  "$ref": "#/definitions/DocIdArrayIndex",
+  "title": "DocIdArrayIndex",
   "definitions": {
-    "RatingsIndex": {
+    "DocIdArrayIndex": {
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/CeramicDocIdArray"
       },
-      "title": "RatingsIndex"
+      "title": "DocIdArrayIndex"
     },
     "CeramicDocId": {
       "type": "string",

@@ -4,9 +4,16 @@ import { parseSeedFromDotenv, parseDotenv } from '../src/utils/dotenv';
 import { createCeramic } from '../src/apis/ceramic';
 import { createThreeIdFromSeed } from '../src/apis/threeId';
 import { createJSONFile } from './utils';
-import schemas from '../schemas';
+import publishedSchemas from '../schemas/publishedSchemas.json';
 
 import type { CeramicApi } from '@ceramicnetwork/common';
+
+const DEFINITION_TO_SCHEMA_DOC_ID_MAP = {
+  BookmarksIndex: publishedSchemas.DocIdArrayIndex,
+  ListsIndex: publishedSchemas.DocIdArrayIndex,
+  RatingsIndex: publishedSchemas.DocIdArrayIndex,
+  CommentsIndex: publishedSchemas.DocIdArrayIndex,
+};
 
 async function main() {
   try {
@@ -38,22 +45,22 @@ async function publishDefinitions(ceramic: CeramicApi) {
     [definitionName: string]: string;
   } = {};
 
-  for (const schemaName of Object.keys(schemas.publishedSchemas)) {
-    const schemaDocID = schemas.publishedSchemas[schemaName];
-
+  for (const [definitionName, schemaDocID] of Object.entries(
+    DEFINITION_TO_SCHEMA_DOC_ID_MAP
+  )) {
     try {
       const definitionDoc = await createDefinition(ceramic, {
-        description: schemaName,
-        name: schemaName,
+        description: definitionName,
+        name: definitionName,
         schema: schemaDocID,
       });
       const definitionDocID = definitionDoc.id.toUrl();
-      definitionNameToDocId[schemaName] = definitionDocID;
+      definitionNameToDocId[definitionName] = definitionDocID;
       console.log(
-        `✅ Definition ${schemaName} published. DocId: ${definitionDocID}`
+        `✅ Definition ${definitionName} published. DocId: ${definitionDocID}`
       );
     } catch (error) {
-      console.log(`❌ Definition ${schemaName} failed.`, error);
+      console.log(`❌ Definition ${definitionName} failed.`, error);
     }
   }
 
