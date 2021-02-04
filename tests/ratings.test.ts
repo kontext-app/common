@@ -1,12 +1,11 @@
 import * as ratingsApi from '../src/apis/ratings';
-import { definitions } from '../src/constants';
 
 describe('ratings api', () => {
   describe('RatingsIndex schema', () => {
     describe('#getRatingsIndexDocID()', () => {
       it('should return null if idx empty', async () => {
         const mockIDX = jest.fn().mockImplementation(() => ({
-          getIDXContent: () => Promise.resolve(null),
+          getIndex: () => Promise.resolve(null),
         }));
 
         const ratingsIndexDocID = await ratingsApi.getRatingsIndexDocID(
@@ -17,7 +16,7 @@ describe('ratings api', () => {
 
       it('should return null if RatingsIndex not set', async () => {
         const mockIDX = jest.fn().mockImplementation(() => ({
-          getIDXContent: () => Promise.resolve({}),
+          getIndex: () => Promise.resolve({}),
         }));
 
         const ratingsIndexDocID = await ratingsApi.getRatingsIndexDocID(
@@ -28,8 +27,7 @@ describe('ratings api', () => {
 
       it('should return doc id of RatingsIndex', async () => {
         const mockIDX = jest.fn().mockImplementation(() => ({
-          getIDXContent: () =>
-            Promise.resolve({ [definitions.RatingsIndex]: 'ceramic://' }),
+          getIndex: () => Promise.resolve({ ratingsIndex: 'ceramic://' }),
         }));
 
         const ratingsIndexDocID = await ratingsApi.getRatingsIndexDocID(
@@ -137,8 +135,6 @@ describe('ratings api', () => {
 
         const docId = await ratingsApi.createRatingDoc(mockIDX(), {
           ratedDocId: 'ceramic://ratedDoc',
-          body: 'good stuff',
-          title: 'very good',
           bestRating: 1,
           worstRating: -1,
           rating: 1,

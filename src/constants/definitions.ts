@@ -1,20 +1,10 @@
 export const PUBLISHED_DEFINITIONS = {
-  Bookmark:
-    'ceramic://kjzl6cwe1jw148zioo6p9l0w0vn4u61iu7ngkar1vbe62b73c8bamp5tgbysrqd',
-  Bookmarks:
-    'ceramic://kjzl6cwe1jw147ldupet7zer8nylmq1g0mgc2ngxj7l9qiver77ab5cu3x1s555',
   BookmarksIndex:
-    'ceramic://kjzl6cwe1jw14a2nmdxvzcnn6kzv14669iezzyi7lcjln9pecuc1lye2iv1y2q4',
-  BookmarksList:
-    'ceramic://kjzl6cwe1jw1462kd533uy4ypumn4l5vqvvydmogxqnzd2vsizilkps115vlepy',
-  BookmarksLists:
-    'ceramic://kjzl6cwe1jw149o4gx86zpzx9ls12i8kkdtv8z97yefbd37mjfjk391s3ni7bkb',
-  Rating:
-    'ceramic://kjzl6cwe1jw1484rhx0hixb9dehq5bbi3ylcpl3m9jdke3wop4wtqe3yb7s7odk',
+    'ceramic://kjzl6cwe1jw14avjlvp96kho3p1aw3e5he0ioojkx5osnutsbs3gf76jxffrnbz',
+  ListsIndex:
+    'ceramic://kjzl6cwe1jw146lzzs624y8h0bza8zabji10wbj5f0l0p0cimpyp0auu8qrdrya',
   RatingsIndex:
-    'ceramic://kjzl6cwe1jw145cjixd8cq50pr6wmfn8kb1s8ymc9pu6ao6oc7jwlop1gzp737p',
-  Comment:
-    'ceramic://kjzl6cwe1jw146qa13az2l023xafl5j9j1b4qkakuhfid76mjgeaqasgoa45lxs',
+    'ceramic://kjzl6cwe1jw1482zwslxhj40g93wqtxz9b6jgva05ih8yuoxncv4obdhptaoahz',
   CommentsIndex:
-    'ceramic://kjzl6cwe1jw145nq84c8eb2yualyni5xf6mqsuw0yhywunwztnt2wbe21ohrfyw',
+    'ceramic://kjzl6cwe1jw14bd246yns66rh5njpbebba972a1c1h27rybhh16laahe42t00gc',
 };

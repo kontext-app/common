@@ -10,16 +10,31 @@ export const LoadingStatus: {
   REJECTED: 'rejected',
 };
 
+export const IDXAliases = {
+  BOOKMARKS_INDEX: 'bookmarksIndex',
+  LISTS_INDEX: 'listsIndex',
+  RATINGS_INDEX: 'ratingsIndex',
+  COMMENTS_INDEX: 'commentsIndex',
+};
+
 export const DefaultBookmarksIndexKeys = {
   UNSORTED: 'unsorted',
   PUBLIC: 'public',
   PRIVATE: 'private',
-  LISTS: 'lists',
+};
+
+export const DefaultListsIndexKeys = {
+  UNSORTED: 'unsorted',
+  PUBLIC: 'public',
+  PRIVATE: 'private',
 };
 
 export const DefaultRatingsIndexKeys = {
   BOOKMARKS: 'bookmarks',
-  RATINGS: 'ratings',
+};
+
+export const DefaultCommentsIndexKeys = {
+  BOOKMARKS: 'bookmarks',
 };
 
 export const AuthenticationMethods: {
