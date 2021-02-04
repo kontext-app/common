@@ -1,6 +1,8 @@
 import { IDX } from '@ceramicstudio/idx';
 
-import { definitions, schemas } from '../constants';
+import { schemas } from '../constants';
+import { DefaultRatingsIndexKeys, IDXAliases } from '../constants/enums';
+import { getDefaultIndexDocContent } from '../utils/schema';
 
 import type { RatingsIndexDocContent, RatingDocContent } from '../types';
 
@@ -16,7 +18,7 @@ export async function getRatingsIndexDocID(
     return null;
   }
 
-  const ratingsIndexDocID = idxDocContent[definitions.RatingsIndex];
+  const ratingsIndexDocID = idxDocContent[IDXAliases.RATINGS_INDEX];
   return ratingsIndexDocID ? ratingsIndexDocID : null;
 }
 
@@ -24,21 +26,23 @@ export async function hasRatingsIndex(
   idx: IDX,
   did?: string
 ): Promise<boolean> {
-  return idx.has('RatingsIndex', did);
+  return idx.has(IDXAliases.RATINGS_INDEX, did);
 }
 
 export async function getRatingsIndexDocContent(
   idx: IDX,
   did?: string
 ): Promise<RatingsIndexDocContent | null> {
-  return idx.get<RatingsIndexDocContent>('RatingsIndex', did);
+  return idx.get<RatingsIndexDocContent>(IDXAliases.RATINGS_INDEX, did);
 }
 
 export async function setDefaultRatingsIndex(idx: IDX): Promise<string> {
-  await idx.remove('RatingsIndex');
-  const ratingsIndexDocID = await idx.set('RatingsIndex', {
-    bookmarks: [],
-  });
+  await idx.remove(IDXAliases.RATINGS_INDEX);
+  const ratingsIndexDocID = await idx.set(
+    IDXAliases.RATINGS_INDEX,
+    getDefaultIndexDocContent(Object.values(DefaultRatingsIndexKeys))
+  );
+
   return ratingsIndexDocID.toUrl();
 }
 
@@ -64,7 +68,7 @@ export async function addEmptyRatingsIndexKey(
     throw new Error(`Index key ${params.indexKey} already exists`);
   }
 
-  const ratingsIndexDocID = await idx.set('RatingsIndex', {
+  const ratingsIndexDocID = await idx.set(IDXAliases.RATINGS_INDEX, {
     ...ratingsIndexDocContent,
     [params.indexKey]: [],
   });
@@ -78,7 +82,10 @@ export async function addRatingDocToRatingsIndex(
     ratingsIndexKey?: string;
   }
 ): Promise<RatingsIndexDocContent> {
-  const { ratingDocID, ratingsIndexKey = 'bookmarks' } = params;
+  const {
+    ratingDocID,
+    ratingsIndexKey = DefaultRatingsIndexKeys.BOOKMARKS,
+  } = params;
 
   const ratingsIndexDocContent = await getRatingsIndexDocContent(idx);
 
@@ -92,7 +99,7 @@ export async function addRatingDocToRatingsIndex(
     ...ratingsIndexDocContent,
     [ratingsIndexKey]: updatedRatingDocIDs,
   };
-  await idx.set('RatingsIndex', newRatingsIndexDocContent);
+  await idx.set(IDXAliases.RATINGS_INDEX, newRatingsIndexDocContent);
 
   return newRatingsIndexDocContent;
 }
@@ -104,7 +111,10 @@ export async function addManyRatingDocsToRatingsIndex(
     ratingsIndexKey?: string;
   }
 ): Promise<RatingsIndexDocContent> {
-  const { ratingDocIDs = [], ratingsIndexKey = 'bookmarks' } = params;
+  const {
+    ratingDocIDs = [],
+    ratingsIndexKey = DefaultRatingsIndexKeys.BOOKMARKS,
+  } = params;
 
   const ratingsIndexDocContent = await getRatingsIndexDocContent(idx);
 
@@ -118,7 +128,7 @@ export async function addManyRatingDocsToRatingsIndex(
     ...ratingsIndexDocContent,
     [ratingsIndexKey]: updatedRatingDocIDs,
   };
-  await idx.set('RatingsIndex', newRatingsIndexDocContent);
+  await idx.set(IDXAliases.RATINGS_INDEX, newRatingsIndexDocContent);
 
   return newRatingsIndexDocContent;
 }

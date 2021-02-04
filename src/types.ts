@@ -23,11 +23,10 @@ export type RatingDocContent = {
 export type RatingDoc = CeramicDoc<RatingDocContent>;
 
 export type BookmarksIndexDocContent = {
-  unsorted: string;
-  public: string;
-  private: string;
-  lists: string;
-  [key: string]: string;
+  unsorted: string[];
+  public: string[];
+  private: string[];
+  [key: string]: string[];
 };
 
 export type BookmarksIndexDoc = CeramicDoc<BookmarksIndexDocContent>;
@@ -43,23 +42,24 @@ export type BookmarkDocContent = {
 
 export type BookmarkDoc = CeramicDoc<BookmarkDocContent>;
 
-export type BookmarksDocContent = Array<string>;
-
-export type BookmarksDoc = CeramicDoc<BookmarksDocContent>;
-
-export type BookmarksListDocContent = {
+export type ListDocContent = {
   title: string;
   author: string;
   description: string;
   creationDate: string;
-  bookmarks: Array<string>;
+  items: Array<string>;
 };
 
-export type BookmarksListDoc = CeramicDoc<BookmarksListDocContent>;
+export type ListDoc = CeramicDoc<ListDocContent>;
 
-export type BookmarksListsDocContent = Array<string>;
+export type ListsIndexDocContent = {
+  unsorted: string[];
+  public: string[];
+  private: string[];
+  [key: string]: string[];
+};
 
-export type BookmarksListsDoc = CeramicDoc<BookmarksListsDocContent>;
+export type ListsIndexDoc = CeramicDoc<ListsIndexDocContent>;
 
 export type BasicProfileDocContent = {
   name: string;
@@ -71,10 +71,6 @@ export type BasicProfileDoc = CeramicDoc<BasicProfileDocContent>;
 
 export type AuthenticationMethod = 'seed' | 'ethereum';
 
-export type DefaultBookmarksIndexKey =
-  | 'unsorted'
-  | 'public'
-  | 'private'
-  | 'lists';
+export type DefaultBookmarksIndexKey = 'unsorted' | 'public' | 'private';
 
 export type LoadingStatus = 'idle' | 'pending' | 'rejected' | 'fulfilled';

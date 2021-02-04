@@ -1,5 +1,14 @@
 import { schemas, definitions } from '../index';
 
+export function getDefaultIndexDocContent(defaultIndexKeys: string[] = []) {
+  return defaultIndexKeys.reduce(
+    (defaultIndexDocContent, defaultIndexKey) => ({
+      [defaultIndexKey]: [],
+    }),
+    {}
+  );
+}
+
 export function getSchemaNameByDocID(docID?: string): string | null {
   return findRecordKeyByValue(schemas, docID);
 }
