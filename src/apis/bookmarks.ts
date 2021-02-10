@@ -90,11 +90,40 @@ export async function addBookmarkDocToBookmarksIndex(
   const bookmarksIndexDocContent = await getBookmarksIndexDocContent(idx);
 
   if (!bookmarksIndexDocContent) {
-    throw new Error('Default RatingsIndex doc content is not set');
+    throw new Error('Default BookmarksIndex doc content is not set');
   }
 
   const existingBookmarkDocIDs = bookmarksIndexDocContent[bookmarksIndexKey];
   const updatedBookmarkDocIDs = [bookmarkDocID, ...existingBookmarkDocIDs];
+  const newBookmarksIndexDocContent = {
+    ...bookmarksIndexDocContent,
+    [bookmarksIndexKey]: updatedBookmarkDocIDs,
+  };
+  await idx.set(IDXAliases.BOOKMARKS_INDEX, newBookmarksIndexDocContent);
+
+  return newBookmarksIndexDocContent;
+}
+
+export async function addManyBookmarkDocsToBookmarksIndex(
+  idx: IDX,
+  params: {
+    bookmarkDocIDs: string[];
+    bookmarksIndexKey?: string;
+  }
+): Promise<BookmarksIndexDocContent> {
+  const {
+    bookmarkDocIDs = [],
+    bookmarksIndexKey = DefaultBookmarksIndexKeys.UNSORTED,
+  } = params;
+
+  const bookmarksIndexDocContent = await getBookmarksIndexDocContent(idx);
+
+  if (!bookmarksIndexDocContent) {
+    throw new Error('Default BookmarksIndex doc content is not set');
+  }
+
+  const existingBookmarkDocIDs = bookmarksIndexDocContent[bookmarksIndexKey];
+  const updatedBookmarkDocIDs = [...bookmarkDocIDs, ...existingBookmarkDocIDs];
   const newBookmarksIndexDocContent = {
     ...bookmarksIndexDocContent,
     [bookmarksIndexKey]: updatedBookmarkDocIDs,
