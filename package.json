@@ -1,6 +1,6 @@
 {
   "name": "kontext-common",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "files": [
