@@ -15,15 +15,15 @@ export function createIDX(ceramic: CeramicApi) {
   return idx;
 }
 
-export async function setDefaultKontextIndices() {
+export async function setDefaultKontextIDX(idx: IDX) {
   const [
     bookmarksIndexDocID,
     listsIndexDocID,
     ratingsIndexDocID,
   ] = await Promise.all([
-    setDefaultBookmarksIndex,
-    setDefaultListsIndex,
-    setDefaultRatingsIndex,
+    setDefaultBookmarksIndex(idx),
+    setDefaultListsIndex(idx),
+    setDefaultRatingsIndex(idx),
   ]);
 
   return {
