@@ -3,6 +3,7 @@ import { schemas, definitions } from '../index';
 export function getDefaultIndexDocContent(defaultIndexKeys: string[] = []) {
   return defaultIndexKeys.reduce(
     (defaultIndexDocContent, defaultIndexKey) => ({
+      ...defaultIndexDocContent,
       [defaultIndexKey]: [],
     }),
     {}
