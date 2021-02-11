@@ -1,6 +1,6 @@
 import { IDX } from '@ceramicstudio/idx';
 
-import { schemas } from '../constants';
+import { definitions, schemas } from '../constants';
 import { DefaultRatingsIndexKeys, IDXAliases } from '../constants/enums';
 import { getDefaultIndexDocContent } from '../utils/schema';
 
@@ -18,8 +18,8 @@ export async function getRatingsIndexDocID(
     return null;
   }
 
-  const ratingsIndexDocID = idxDocContent[IDXAliases.RATINGS_INDEX];
-  return ratingsIndexDocID ? ratingsIndexDocID : null;
+  const ratingsIndexDocID = idxDocContent[definitions.RatingsIndex];
+  return ratingsIndexDocID;
 }
 
 export async function hasRatingsIndex(

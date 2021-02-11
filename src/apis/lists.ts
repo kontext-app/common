@@ -1,6 +1,6 @@
 import { IDX } from '@ceramicstudio/idx';
 
-import { schemas } from '../constants';
+import { schemas, definitions } from '../constants';
 import { IDXAliases, DefaultListsIndexKeys } from '../constants/enums';
 import { getDefaultIndexDocContent } from '../utils/schema';
 
@@ -8,7 +8,7 @@ import type { ListDocContent, ListsIndexDocContent } from '../types';
 
 //#region schema `ListsIndex`
 
-export async function getListsIndex(
+export async function getListsIndexDocID(
   idx: IDX,
   did?: string
 ): Promise<string | null> {
@@ -18,7 +18,7 @@ export async function getListsIndex(
     return null;
   }
 
-  const listsIndexDocID = idxDocContent[IDXAliases.LISTS_INDEX];
+  const listsIndexDocID = idxDocContent[definitions.ListsIndex];
   return listsIndexDocID;
 }
 

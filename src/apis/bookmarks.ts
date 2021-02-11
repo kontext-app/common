@@ -1,6 +1,6 @@
 import { IDX } from '@ceramicstudio/idx';
 
-import { schemas } from '../constants';
+import { schemas, definitions } from '../constants';
 import { IDXAliases, DefaultBookmarksIndexKeys } from '../constants/enums';
 import { getDefaultIndexDocContent } from '../utils/schema';
 
@@ -18,7 +18,7 @@ export async function getBookmarksIndexDocID(
     return null;
   }
 
-  const bookmarksIndexDocID = idxDocContent[IDXAliases.BOOKMARKS_INDEX];
+  const bookmarksIndexDocID = idxDocContent[definitions.BookmarksIndex];
   return bookmarksIndexDocID;
 }
 
