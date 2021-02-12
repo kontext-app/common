@@ -68,7 +68,7 @@ export async function addEmptyBookmarksIndexKey(
     throw new Error(`Index key ${params.indexKey} already exists`);
   }
 
-  const bookmarksIndexDocID = await idx.set('BookmarksIndex', {
+  const bookmarksIndexDocID = await idx.set(IDXAliases.BOOKMARKS_INDEX, {
     ...bookmarksIndexDocContent,
     [params.indexKey]: [],
   });
