@@ -121,4 +121,25 @@ export async function getListDocContent(
   return listDoc.content;
 }
 
+export async function addItemToListDoc(
+  idx: IDX,
+  params: {
+    itemDocID: string;
+    listDocID: string;
+  }
+): Promise<ListDocContent> {
+  const listDoc = await idx.ceramic.loadDocument(params.listDocID);
+
+  const prevItemDocIDs = listDoc.content.items;
+  const updatedItemDocIDs = [params.itemDocID, ...prevItemDocIDs];
+  const updatedListDocContent = {
+    ...listDoc.content,
+    items: updatedItemDocIDs,
+  };
+  await listDoc.change({
+    content: updatedListDocContent,
+  });
+  return updatedListDocContent;
+}
+
 //#endregion
