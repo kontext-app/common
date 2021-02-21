@@ -5,4 +5,5 @@ export * as profile from './profile';
 export * as bookmarks from './bookmarks';
 export * as ratings from './ratings';
 export * as lists from './lists';
+export * as curatedDocs from './curatedDocs';
 export * as aggregatedRatings from './aggregatedRatings';

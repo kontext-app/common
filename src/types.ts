@@ -4,6 +4,22 @@ export interface CeramicDoc<T> extends Doctype {
   content: T;
 }
 
+export type CuratedDocsIndexDocContent = {
+  bookmarks: string;
+  [key: string]: string;
+};
+
+export type CuratedDocsIndexDoc = CeramicDoc<CuratedDocsIndexDocContent>;
+
+export type CuratedDocsDocContent = {
+  recent: string[];
+  popular: string[];
+  featured: string[];
+  [key: string]: string[];
+};
+
+export type CuratedDocsDoc = CeramicDoc<CuratedDocsDocContent>;
+
 export type AggregatedRatingsIndexDocContent = {
   bookmarks: string[];
   [key: string]: string[];

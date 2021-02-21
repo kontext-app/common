@@ -16,6 +16,7 @@ export const IDXAliases = {
   RATINGS_INDEX: 'ratingsIndex',
   COMMENTS_INDEX: 'commentsIndex',
   AGGREGATED_RATINGS_INDEX: 'aggregatedRatingsIndex',
+  CURATED_DOCS_INDEX: 'curatedDocsIndex',
 };
 
 export const DefaultBookmarksIndexKeys = {
@@ -40,6 +41,16 @@ export const DefaultCommentsIndexKeys = {
 
 export const DefaultAggregatedRatingsIndexKeys = {
   BOOKMARKS: 'bookmarks',
+};
+
+export const DefaultCuratedDocsIndexKeys = {
+  BOOKMARKS: 'bookmarks',
+};
+
+export const DefaultCuratedDocsKeys = {
+  RECENT: 'recent',
+  POPULAR: 'popular',
+  featured: 'featured',
 };
 
 export const AuthenticationMethods: {

@@ -1,4 +1,5 @@
 import DocIdArrayIndex from './DocIdArrayIndex.json';
+import DocIdIndex from './DocIdIndex.json';
 import Bookmark from './Bookmark.json';
 import List from './List.json';
 import Rating from './Rating.json';
@@ -11,6 +12,7 @@ export const schemas: {
   [key: string]: any;
 } = {
   DocIdArrayIndex,
+  DocIdIndex,
   Bookmark,
   List,
   Rating,

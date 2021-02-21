@@ -14,6 +14,8 @@ const DEFINITION_TO_SCHEMA_DOC_ID_MAP = {
   RatingsIndex: publishedSchemas.DocIdArrayIndex,
   CommentsIndex: publishedSchemas.DocIdArrayIndex,
   AggregatedRatingsIndex: publishedSchemas.DocIdArrayIndex,
+  CuratedDocsIndex: publishedSchemas.DocIdIndex,
+  CuratedDocs: publishedSchemas.DocIdArrayIndex,
 };
 
 async function main() {

@@ -10,6 +10,7 @@ import type { CeramicApi } from '@ceramicnetwork/common';
 
 const {
   DocIdArrayIndex,
+  DocIdIndex,
   Bookmark,
   List,
   Rating,
@@ -21,6 +22,7 @@ const schemasToPublish: {
   [schemaName: string]: any;
 } = {
   DocIdArrayIndex,
+  DocIdIndex,
   Bookmark,
   List,
   Rating,
