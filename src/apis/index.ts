@@ -5,3 +5,4 @@ export * as profile from './profile';
 export * as bookmarks from './bookmarks';
 export * as ratings from './ratings';
 export * as lists from './lists';
+export * as aggregatedRatings from './aggregatedRatings';

@@ -15,6 +15,7 @@ export const IDXAliases = {
   LISTS_INDEX: 'listsIndex',
   RATINGS_INDEX: 'ratingsIndex',
   COMMENTS_INDEX: 'commentsIndex',
+  AGGREGATED_RATINGS_INDEX: 'aggregatedRatingsIndex',
 };
 
 export const DefaultBookmarksIndexKeys = {
@@ -34,6 +35,10 @@ export const DefaultRatingsIndexKeys = {
 };
 
 export const DefaultCommentsIndexKeys = {
+  BOOKMARKS: 'bookmarks',
+};
+
+export const DefaultAggregatedRatingsIndexKeys = {
   BOOKMARKS: 'bookmarks',
 };
 

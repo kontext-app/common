@@ -4,6 +4,21 @@ export interface CeramicDoc<T> extends Doctype {
   content: T;
 }
 
+export type AggregatedRatingsIndexDocContent = {
+  bookmarks: string[];
+  [key: string]: string[];
+};
+
+export type AggregatedRatingsIndexDoc = CeramicDoc<AggregatedRatingsIndexDocContent>;
+
+export type AggregatedRatingsDocContent = {
+  ratedDocId: string;
+  aggregatedRating: number;
+  aggregatedRatingDocIds: string[];
+};
+
+export type AggregatedRatingDoc = CeramicDoc<AggregatedRatingsDocContent>;
+
 export type RatingsIndexDocContent = {
   bookmarks: string[];
   [key: string]: string[];
