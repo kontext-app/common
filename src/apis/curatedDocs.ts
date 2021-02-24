@@ -50,10 +50,15 @@ export async function getCuratedDocsIndexDocContent(
 
 export async function setDefaultCuratedDocsIndex(idx: IDX): Promise<string> {
   await idx.remove(IDXAliases.CURATED_DOCS_INDEX);
-  const curatedDocsIndexDocID = await idx.set(
-    IDXAliases.CURATED_DOCS_INDEX,
-    {}
+
+  const curatedDocsDocID = await createCuratedDocsDoc(
+    idx,
+    getDefaultIndexDocContent(Object.values(DefaultCuratedDocsKeys)) as any
   );
+
+  const curatedDocsIndexDocID = await idx.set(IDXAliases.CURATED_DOCS_INDEX, {
+    [DefaultCuratedDocsIndexKeys.BOOKMARKS]: curatedDocsDocID,
+  });
 
   return curatedDocsIndexDocID.toUrl();
 }

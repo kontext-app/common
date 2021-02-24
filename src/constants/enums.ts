@@ -50,7 +50,7 @@ export const DefaultCuratedDocsIndexKeys = {
 export const DefaultCuratedDocsKeys = {
   RECENT: 'recent',
   POPULAR: 'popular',
-  featured: 'featured',
+  FEATURED: 'featured',
 };
 
 export const AuthenticationMethods: {
