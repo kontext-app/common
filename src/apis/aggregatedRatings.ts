@@ -5,10 +5,9 @@ import {
   DefaultAggregatedRatingsIndexKeys,
   IDXAliases,
 } from '../constants/enums';
-import { getDefaultIndexDocContent } from '../utils/schema';
 
 import type {
-  AggregatedRatingDoc,
+  AggregatedRating,
   AggregatedRatingsDocContent,
   AggregatedRatingsIndexDocContent,
 } from '../types';
@@ -51,97 +50,26 @@ export async function setDefaultAggregatedRatingsIndex(
   idx: IDX
 ): Promise<string> {
   await idx.remove(IDXAliases.AGGREGATED_RATINGS_INDEX);
-  const aggregatedRatingsIndexDocID = await idx.set(
-    IDXAliases.AGGREGATED_RATINGS_INDEX,
-    getDefaultIndexDocContent(Object.values(DefaultAggregatedRatingsIndexKeys))
-  );
 
-  return aggregatedRatingsIndexDocID.toUrl();
-}
-
-export async function addEmptyAggregatedRatingsIndexKey(
-  idx: IDX,
-  params: {
-    did: string;
-    indexKey: string;
-  }
-) {
-  const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
-    idx,
-    params.did
-  );
-
-  if (!aggregatedRatingsIndexDocContent) {
-    throw new Error('AggregatedRatingsIndex is not set');
-  }
-
-  const aggregatedRatingsDocIDsForIndexKey =
-    aggregatedRatingsIndexDocContent[params.indexKey];
-
-  if (Array.isArray(aggregatedRatingsDocIDsForIndexKey)) {
-    throw new Error(`Index key ${params.indexKey} already exists`);
-  }
+  const aggregatedRatingsDocID = await createAggregatedRatingsDoc(idx, {});
 
   const aggregatedRatingsIndexDocID = await idx.set(
     IDXAliases.AGGREGATED_RATINGS_INDEX,
     {
-      ...aggregatedRatingsIndexDocContent,
-      [params.indexKey]: [],
+      [DefaultAggregatedRatingsIndexKeys.BOOKMARKS]: aggregatedRatingsDocID,
     }
   );
+
   return aggregatedRatingsIndexDocID.toUrl();
 }
 
-export async function addAggregatedRatingsDocToAggregatedRatingsIndex(
+export async function setAggregatedRatingsDocInAggregatedRatingsIndex(
   idx: IDX,
   params: {
     aggregatedRatingsDocID: string;
-    aggregatedRatingsIndexKey?: string;
+    aggregatedRatingsIndexKey: string;
   }
 ): Promise<AggregatedRatingsIndexDocContent> {
-  const {
-    aggregatedRatingsDocID,
-    aggregatedRatingsIndexKey = DefaultAggregatedRatingsIndexKeys.BOOKMARKS,
-  } = params;
-
-  const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
-    idx
-  );
-
-  if (!aggregatedRatingsIndexDocContent) {
-    throw new Error('Default RatingsIndex doc content is not set');
-  }
-
-  const existingAggregatedRatingsDocIDs =
-    aggregatedRatingsIndexDocContent[aggregatedRatingsIndexKey];
-  const updatedAggregatedRatingsDocIDs = [
-    aggregatedRatingsDocID,
-    ...existingAggregatedRatingsDocIDs,
-  ];
-  const newAggregatedRatingsIndexDocContent = {
-    ...aggregatedRatingsIndexDocContent,
-    [aggregatedRatingsIndexKey]: updatedAggregatedRatingsDocIDs,
-  };
-  await idx.set(
-    IDXAliases.AGGREGATED_RATINGS_INDEX,
-    newAggregatedRatingsIndexDocContent
-  );
-
-  return newAggregatedRatingsIndexDocContent;
-}
-
-export async function addManyAggregatedRatingsDocsToAggregatedRatingsIndex(
-  idx: IDX,
-  params: {
-    aggregatedRatingsDocIDs: string[];
-    aggregatedRatingsIndexKey?: string;
-  }
-): Promise<AggregatedRatingsIndexDocContent> {
-  const {
-    aggregatedRatingsDocIDs = [],
-    aggregatedRatingsIndexKey = DefaultAggregatedRatingsIndexKeys.BOOKMARKS,
-  } = params;
-
   const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
     idx
   );
@@ -150,15 +78,9 @@ export async function addManyAggregatedRatingsDocsToAggregatedRatingsIndex(
     throw new Error('Default AggregatedRatingsIndex doc content is not set');
   }
 
-  const existingAggregatedRatingsDocIDs =
-    aggregatedRatingsIndexDocContent[aggregatedRatingsIndexKey];
-  const updatedAggregatedRatingDocIDs = [
-    ...aggregatedRatingsDocIDs,
-    ...existingAggregatedRatingsDocIDs,
-  ];
   const newAggregatedRatingsIndexDocContent = {
     ...aggregatedRatingsIndexDocContent,
-    [aggregatedRatingsIndexKey]: updatedAggregatedRatingDocIDs,
+    [params.aggregatedRatingsIndexKey]: params.aggregatedRatingsDocID,
   };
   await idx.set(
     IDXAliases.AGGREGATED_RATINGS_INDEX,
@@ -168,9 +90,85 @@ export async function addManyAggregatedRatingsDocsToAggregatedRatingsIndex(
   return newAggregatedRatingsIndexDocContent;
 }
 
+export async function addAggregatedRatingToIndex(
+  idx: IDX,
+  params: {
+    aggregatedRatingToAdd: AggregatedRating;
+    indexKey: string;
+  }
+): Promise<AggregatedRating> {
+  const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
+    idx
+  );
+
+  if (!aggregatedRatingsIndexDocContent) {
+    throw new Error('AggregatedRatingsIndex is not set');
+  }
+
+  const aggregatedRatingsDocID =
+    aggregatedRatingsIndexDocContent[params.indexKey];
+
+  if (!aggregatedRatingsDocID) {
+    throw new Error(
+      `AggregatedRatings doc not created for index key: '${params.indexKey}'`
+    );
+  }
+
+  const aggregatedRatingsDoc = await idx.ceramic.loadDocument(
+    aggregatedRatingsDocID
+  );
+  const { ratedDocId } = params.aggregatedRatingToAdd;
+  const updatedAggregatedRatingsDocContent = {
+    ...aggregatedRatingsDoc.content,
+    [ratedDocId]: params.aggregatedRatingToAdd,
+  };
+  await aggregatedRatingsDoc.change(updatedAggregatedRatingsDocContent);
+
+  return updatedAggregatedRatingsDocContent;
+}
+
 //#endregion
 
 //#region schema `AggregatedRatings`
+
+export async function getAggregatedRatingsDocContentByDocID(
+  idx: IDX,
+  docID: string
+): Promise<AggregatedRatingsDocContent> {
+  const doc = await idx.ceramic.loadDocument(docID);
+
+  if (doc.metadata.schema !== schemas.AggregatedRatings) {
+    throw new Error("Schema of loaded doc is not 'AggregatedRatings'");
+  }
+
+  return doc.content;
+}
+
+export async function getAggregatedRatingsDocContentByIndexKey(
+  idx: IDX,
+  indexKey: string
+): Promise<AggregatedRatingsDocContent> {
+  const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
+    idx
+  );
+
+  if (!aggregatedRatingsIndexDocContent) {
+    throw new Error('No AggregatedRatingsIndex set');
+  }
+
+  const aggregatedRatingsDocID = aggregatedRatingsIndexDocContent[indexKey];
+
+  if (!aggregatedRatingsDocID) {
+    throw new Error(
+      `AggregatedRatings doc not created for index key: '${indexKey}'`
+    );
+  }
+
+  const aggregatedRatingDoc = await idx.ceramic.loadDocument(
+    aggregatedRatingsDocID
+  );
+  return aggregatedRatingDoc.content;
+}
 
 export async function createAggregatedRatingsDoc(
   idx: IDX,
@@ -186,34 +184,6 @@ export async function createAggregatedRatingsDoc(
     },
   });
   return id.toUrl();
-}
-
-export async function getAggregatedRatingsDocContent(
-  idx: IDX,
-  docID: string
-): Promise<AggregatedRatingsDocContent> {
-  const aggregatedRatingsDoc = await idx.ceramic.loadDocument(docID);
-  return aggregatedRatingsDoc.content;
-}
-
-export async function updateAggregatedRatingsDoc(
-  idx: IDX,
-  params: {
-    aggregatedRatingsDocID: string;
-    change: Partial<AggregatedRatingsDocContent>;
-  }
-): Promise<AggregatedRatingsDocContent> {
-  const aggregatedRatingsDoc = await idx.ceramic.loadDocument(
-    params.aggregatedRatingsDocID
-  );
-  const updatedContent = {
-    ...aggregatedRatingsDoc.content,
-    ...params.change,
-  };
-  await aggregatedRatingsDoc.change({
-    content: updatedContent,
-  });
-  return updatedContent;
 }
 
 //#endregion

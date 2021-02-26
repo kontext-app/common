@@ -21,19 +21,23 @@ export type CuratedDocsDocContent = {
 export type CuratedDocsDoc = CeramicDoc<CuratedDocsDocContent>;
 
 export type AggregatedRatingsIndexDocContent = {
-  bookmarks: string[];
-  [key: string]: string[];
+  bookmarks: string;
+  [key: string]: string;
 };
 
 export type AggregatedRatingsIndexDoc = CeramicDoc<AggregatedRatingsIndexDocContent>;
 
 export type AggregatedRatingsDocContent = {
+  [ratedDocId: string]: AggregatedRating;
+};
+
+export type AggregatedRatingDoc = CeramicDoc<AggregatedRatingsDocContent>;
+
+export type AggregatedRating = {
   ratedDocId: string;
   aggregatedRating: number;
   aggregatedRatingDocIds: string[];
 };
-
-export type AggregatedRatingDoc = CeramicDoc<AggregatedRatingsDocContent>;
 
 export type RatingsIndexDocContent = {
   bookmarks: string[];

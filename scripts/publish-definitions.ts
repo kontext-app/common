@@ -13,7 +13,7 @@ const DEFINITION_TO_SCHEMA_DOC_ID_MAP = {
   ListsIndex: publishedSchemas.DocIdArrayIndex,
   RatingsIndex: publishedSchemas.DocIdArrayIndex,
   CommentsIndex: publishedSchemas.DocIdArrayIndex,
-  AggregatedRatingsIndex: publishedSchemas.DocIdArrayIndex,
+  AggregatedRatingsIndex: publishedSchemas.DocIdIndex,
   CuratedDocsIndex: publishedSchemas.DocIdIndex,
   CuratedDocs: publishedSchemas.DocIdArrayIndex,
 };
