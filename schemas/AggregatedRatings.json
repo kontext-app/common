@@ -1,23 +1,39 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
+  "$ref": "#/definitions/AggregatedRatings",
   "title": "AggregatedRatings",
-  "properties": {
-    "ratedDocId": {
-      "type": "string",
-      "pattern": "^ceramic://.+(\\?version=.+)?",
-      "maxLength": 1024
-    },
-    "aggregatedRating": {
-      "type": "integer",
-      "title": "aggregatedRating"
-    },
-    "aggregatedRatingDocIds": {
-      "$ref": "#/definitions/CeramicDocIdArray"
-    }
-  },
-  "required": ["ratedDocId", "aggregatedRating"],
   "definitions": {
+    "AggregatedRatings": {
+      "type": "object",
+      "additionalProperties": false,
+      "propertyNames": {
+        "maxLength": 1024
+      },
+      "patternProperties": {
+        "^ceramic://.+(\\?version=.+)?": {
+          "$ref": "#/definitions/AggregatedRating"
+        }
+      },
+      "title": "AggregatedRatings",
+      "maxProperties": 1024
+    },
+    "AggregatedRating": {
+      "type": "object",
+      "title": "AggregatedRating",
+      "properties": {
+        "ratedDocId": {
+          "$ref": "#/definitions/CeramicDocId"
+        },
+        "aggregatedRating": {
+          "type": "integer",
+          "title": "aggregatedRating"
+        },
+        "aggregatedRatingDocIds": {
+          "$ref": "#/definitions/CeramicDocIdArray"
+        }
+      },
+      "required": ["ratedDocId", "aggregatedRating", "aggregatedRatedDocIds"]
+    },
     "CeramicDocId": {
       "type": "string",
       "pattern": "^ceramic://.+(\\?version=.+)?",
