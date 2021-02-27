@@ -25,7 +25,7 @@
           "$ref": "#/definitions/CeramicDocId"
         },
         "aggregatedRating": {
-          "type": "integer",
+          "type": "number",
           "title": "aggregatedRating"
         },
         "aggregatedRatingDocIds": {

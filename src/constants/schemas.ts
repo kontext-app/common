@@ -1,16 +1,16 @@
 export const PUBLISHED_SCHEMAS = {
   DocIdArrayIndex:
-    'ceramic://k3y52l7qbv1frxi6wqugtbfzubcb5lrdqgzxwwkuy405hojhxximjowvlcs5s7668',
+    'ceramic://k3y52l7qbv1frye4h52rg7317iv4in8s0jr0fu8lfy76g1i03tnkrrj2depl3qku8',
   DocIdIndex:
-    'ceramic://k3y52l7qbv1fryeyw0ln5g1hgt1y3gixxwbnur8oeq6t68or7r2z62nwdhgllp4w0',
+    'ceramic://k3y52l7qbv1frxqme8tcxgnevfel83xs71xhb2gdw71ybzcoxjjk8rmuegbqg8kcg',
   Bookmark:
-    'ceramic://k3y52l7qbv1frxhmlk9j5no1jboc4klal9sx4d6yhz2obuuup3jgjcwvh6sovv668',
+    'ceramic://k3y52l7qbv1fryc5lrh8bk5yuu44g82uil1yn8oo6nn39ydhnk9sraeu1bjua5r7k',
   List:
-    'ceramic://k3y52l7qbv1frxnfrurrku4dxmjkc3lqkovy54zfn4iot4xwtbtm5xe3iewq5vmkg',
+    'ceramic://k3y52l7qbv1fry2jlhbgrcnw0pu5p7acovhovr36zwhdq5x8a3ewaubk7wolvj0g0',
   Rating:
-    'ceramic://k3y52l7qbv1fry93p3bqyrr2zkr2ag7rutcdcghfqm10i1ve7qu63yljzlvc5gqo0',
+    'ceramic://k3y52l7qbv1fry75pj8l4b0ecwcxmwcy4ezryi7xcjgli77i632d35j0kckr13668',
   Comment:
-    'ceramic://k3y52l7qbv1fryb95024udtcqz44ri9in8dmycwwbdb0jfcvwa965ikulcr5h3dog',
+    'ceramic://k3y52l7qbv1frybpwtusapc2al2hpg17gdodjqgh7cv7dwb4tbirf1rnrlkv2xyio',
   AggregatedRatings:
-    'ceramic://k3y52l7qbv1fry1ua9glf3ij1s98dvr58tgb1tlqi7ztx1d15w2jx21008o17kmio',
+    'ceramic://k3y52l7qbv1frxifa26emjcec9ncekncdrc358cmrw35bbarubw185wuur3rs79j4',
 };

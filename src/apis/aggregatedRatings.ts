@@ -186,4 +186,24 @@ export async function createAggregatedRatingsDoc(
   return id.toUrl();
 }
 
+export async function updateAggregatedRatingsDoc(
+  idx: IDX,
+  params: {
+    aggregatedRatingsDocID: string;
+    change: Partial<AggregatedRatingsDocContent>;
+  }
+): Promise<AggregatedRatingsDocContent> {
+  const aggregatedRatingsDoc = await idx.ceramic.loadDocument(
+    params.aggregatedRatingsDocID
+  );
+  const updatedContent = {
+    ...aggregatedRatingsDoc.content,
+    ...params.change,
+  };
+  await aggregatedRatingsDoc.change({
+    content: updatedContent,
+  });
+  return updatedContent;
+}
+
 //#endregion
