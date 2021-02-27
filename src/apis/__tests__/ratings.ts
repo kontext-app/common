@@ -1,4 +1,4 @@
-import * as ratingsApi from '../src/apis/ratings';
+import * as ratingsApi from '../ratings';
 
 describe('ratings api', () => {
   describe('RatingsIndex schema', () => {

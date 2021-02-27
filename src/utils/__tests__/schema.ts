@@ -1,8 +1,5 @@
-import {
-  getSchemaNameByDocID,
-  getDefaultIndexDocContent,
-} from '../../src/utils/schema';
-import { PUBLISHED_SCHEMAS } from '../../src/constants/schemas';
+import { getSchemaNameByDocID, getDefaultIndexDocContent } from '../schema';
+import { PUBLISHED_SCHEMAS } from '../../constants/schemas';
 
 describe('schema utils', () => {
   describe('#getSchemaNameByDocID()', () => {

@@ -97,22 +97,10 @@ export async function addAggregatedRatingToIndex(
     indexKey: string;
   }
 ): Promise<AggregatedRating> {
-  const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
-    idx
+  const aggregatedRatingsDocID = await getAggregatedRatingsDocIDByIndexKey(
+    idx,
+    params.indexKey
   );
-
-  if (!aggregatedRatingsIndexDocContent) {
-    throw new Error('AggregatedRatingsIndex is not set');
-  }
-
-  const aggregatedRatingsDocID =
-    aggregatedRatingsIndexDocContent[params.indexKey];
-
-  if (!aggregatedRatingsDocID) {
-    throw new Error(
-      `AggregatedRatings doc not created for index key: '${params.indexKey}'`
-    );
-  }
 
   const aggregatedRatingsDoc = await idx.ceramic.loadDocument(
     aggregatedRatingsDocID
@@ -144,10 +132,10 @@ export async function getAggregatedRatingsDocContentByDocID(
   return doc.content;
 }
 
-export async function getAggregatedRatingsDocContentByIndexKey(
+export async function getAggregatedRatingsDocIDByIndexKey(
   idx: IDX,
   indexKey: string
-): Promise<AggregatedRatingsDocContent> {
+): Promise<string> {
   const aggregatedRatingsIndexDocContent = await getAggregatedRatingsIndexDocContent(
     idx
   );
@@ -164,6 +152,17 @@ export async function getAggregatedRatingsDocContentByIndexKey(
     );
   }
 
+  return aggregatedRatingsDocID;
+}
+
+export async function getAggregatedRatingsDocContentByIndexKey(
+  idx: IDX,
+  indexKey: string
+): Promise<AggregatedRatingsDocContent> {
+  const aggregatedRatingsDocID = await getAggregatedRatingsDocIDByIndexKey(
+    idx,
+    indexKey
+  );
   const aggregatedRatingDoc = await idx.ceramic.loadDocument(
     aggregatedRatingsDocID
   );
