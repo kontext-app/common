@@ -32,7 +32,7 @@
           "$ref": "#/definitions/CeramicDocIdArray"
         }
       },
-      "required": ["ratedDocId", "aggregatedRating", "aggregatedRatedDocIds"]
+      "required": ["ratedDocId", "aggregatedRating", "aggregatedRatingDocIds"]
     },
     "CeramicDocId": {
       "type": "string",

@@ -12,5 +12,5 @@ export const PUBLISHED_SCHEMAS = {
   Comment:
     'ceramic://k3y52l7qbv1frybpwtusapc2al2hpg17gdodjqgh7cv7dwb4tbirf1rnrlkv2xyio',
   AggregatedRatings:
-    'ceramic://k3y52l7qbv1frxifa26emjcec9ncekncdrc358cmrw35bbarubw185wuur3rs79j4',
+    'ceramic://k3y52l7qbv1frxs5uypeweoj33psijdg55n5g9wiop2rk5znfr02vm0oi7egtifpc',
 };
